@@ -1,0 +1,37 @@
+{
+  "name": "moonfire-locs-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:server": "npm run dev:client:build && env-cmd nodemon index.js",
+    "dev:client": "cd client && npm start",
+    "dev:client:build": "cd client && npm run build",
+    "dev": "concurrently \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:migrate": "env-cmd sequelize db:migrate --env development --config ./configs/sequelize.js",
+    "test": "mocha tests/**/*.test.js",
+    "lint": "npm run lint:pug && npm run lint:eslint",
+    "lint:eslint": "./node_modules/.bin/eslint --format codeframe .",
+    "lint:fix": "./node_modules/.bin/eslint --fix --format codeframe ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "concurrently": "^7.0.0",
+    "env-cmd": "^10.1.0",
+    "eslint": "^8.12.0",
+    "mocha": "^9.2.2",
+    "nodemon": "^2.0.15",
+    "sinon": "^13.0.1",
+    "sinon-chai": "^3.7.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.17.0",
+    "sequelize-cli": "^6.4.1"
+  }
+}
